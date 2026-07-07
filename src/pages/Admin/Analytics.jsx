@@ -53,7 +53,7 @@ export default function AdminAnalytics() {
   const fetchAnalytics = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/admin/analytics', {
+      const res = await axios.get('https://flashkindelivery-back-end.onrender.com/api/admin/analytics', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -71,7 +71,7 @@ export default function AdminAnalytics() {
     showPopup('loading', 'Génération du rapport PDF en cours...', false);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/admin/reports/global', {
+      const response = await axios.get('/api/admin/reports/global', {
         headers: { Authorization: `Bearer ${token}` },
         responseType: 'blob' 
       });

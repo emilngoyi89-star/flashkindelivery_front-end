@@ -42,8 +42,8 @@ export default function FlashmanHome() {
       const token = localStorage.getItem('token');
       
       const [statsRes, radarRes] = await Promise.all([
-        axios.get('http://localhost:3000/api/drivers/stats', { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get('http://localhost:3000/api/commands/available', { headers: { Authorization: `Bearer ${token}` } })
+        axios.get('https://flashkindelivery-back-end.onrender.com/api/drivers/stats', { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get('https://flashkindelivery-back-end.onrender.com/api/commands/available', { headers: { Authorization: `Bearer ${token}` } })
       ]);
 
       if (statsRes.data.success) setStats(statsRes.data.stats);
@@ -66,7 +66,7 @@ export default function FlashmanHome() {
     setIsAccepting(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(`http://localhost:3000/api/commands/${orderId}/accept`, {}, {
+      const response = await axios.put(`https://flashkindelivery-back-end.onrender.com/api/commands/${orderId}/accept`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

@@ -27,7 +27,7 @@ export default function Profile() {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/users/profile', {
+      const res = await axios.get('https://flashkindelivery-back-end.onrender.com/api/users/profile', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -49,7 +49,7 @@ export default function Profile() {
     setIsSaving(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:3000/api/users/profile', formData, {
+      await axios.put('https://flashkindelivery-back-end.onrender.com/api/users/profile', formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       updateUser({
@@ -76,7 +76,7 @@ export default function Profile() {
     setIsSaving(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:3000/api/users/password', passwordData, {
+      await axios.put('https://flashkindelivery-back-end.onrender.com/api/users/password', passwordData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Mot de passe sécurisé !');

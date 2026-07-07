@@ -29,7 +29,7 @@ export default function CreateOrder() {
         const token = localStorage.getItem('token');
         
         // Charger les zones
-        const zonesRes = await axios.get('http://localhost:3000/api/zones', {
+        const zonesRes = await axios.get('https://flashkindelivery-back-end.onrender.com/api/zones', {
           headers: { Authorization: `Bearer ${token}` }
         });
         
@@ -53,7 +53,7 @@ export default function CreateOrder() {
         }
 
         // Charger le catalogue produits
-        const productsRes = await axios.get('http://localhost:3000/api/products', {
+        const productsRes = await axios.get('https://flashkindelivery-back-end.onrender.com/api/products', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (productsRes.data.success) {
@@ -144,7 +144,7 @@ export default function CreateOrder() {
         deliveryFee: deliveryFee
       };
 
-      const response = await axios.post('http://localhost:3000/api/commands', orderData, {
+      const response = await axios.post('https://flashkindelivery-back-end.onrender.com/api/commands', orderData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -189,7 +189,7 @@ export default function CreateOrder() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:3000/api/ai/parse-order', { rawText: bulkText }, {
+      const response = await axios.post('https://flashkindelivery-back-end.onrender.com/api/ai/parse-order', { rawText: bulkText }, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

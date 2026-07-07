@@ -22,7 +22,7 @@ export default function Balance() {
 const handleTestMoney = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3000/api/balance/test-money', {}, {
+      await axios.post('https://flashkindelivery-back-end.onrender.com/api/balance/test-money', {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Bip Boop ! 50$ ajoutés !");
@@ -35,7 +35,7 @@ const handleTestMoney = async () => {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/balance', {
+      const response = await axios.get('https://flashkindelivery-back-end.onrender.com/api/balance', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -62,7 +62,7 @@ const handleTestMoney = async () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:3000/api/balance/withdraw', 
+        'https://flashkindelivery-back-end.onrender.com/api/balance/withdraw', 
         withdrawForm, 
         { 
           headers: { Authorization: `Bearer ${token}` },

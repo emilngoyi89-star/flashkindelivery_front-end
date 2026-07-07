@@ -28,7 +28,7 @@ export default function Tracking() {
     setError(null);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/commands', {
+      const response = await axios.get('https://flashkindelivery-back-end.onrender.com/api/commands', {
         headers: { Authorization: `Bearer ${token}` }
       });
       

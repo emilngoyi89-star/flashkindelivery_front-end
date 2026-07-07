@@ -23,7 +23,7 @@ export default function AdminFinance() {
   const fetchFinance = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/admin/finance', {
+      const res = await axios.get('https://flashkindelivery-back-end.onrender.com/api/admin/finance', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -61,7 +61,7 @@ export default function AdminFinance() {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post(`http://localhost:3000/api/admin/finance/withdrawals/${selectedRequest.id}`, 
+      const res = await axios.post(`https://flashkindelivery-back-end.onrender.com/api/admin/finance/withdrawals/${selectedRequest.id}`,
         { action, reason: rejectReason },
         { headers: { Authorization: `Bearer ${token}` } }
       );

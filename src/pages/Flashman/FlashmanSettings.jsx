@@ -119,7 +119,7 @@ export default function FlashmanSettings() {
     setIsLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put('http://localhost:3000/api/users/profile', profileData, {
+      const response = await axios.put('https://flashkindelivery-back-end.onrender.com/api/users/profile', profileData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -145,7 +145,7 @@ export default function FlashmanSettings() {
     setIsLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put('http://localhost:3000/api/users/change-password', passwordData, {
+      const response = await axios.put('https://flashkindelivery-back-end.onrender.com/api/users/change-password', passwordData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -182,7 +182,7 @@ export default function FlashmanSettings() {
     setIsAiProcessing(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:3000/api/ai/emergency', {
+      const response = await axios.post('https://flashkindelivery-back-end.onrender.com/api/ai/emergency', {
         category: selectedCategory,
         responses: finalAnswers
       }, { headers: { Authorization: `Bearer ${token}` } });

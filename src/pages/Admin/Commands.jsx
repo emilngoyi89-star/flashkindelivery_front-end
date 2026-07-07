@@ -22,7 +22,7 @@ export default function AdminCommands() {
   const fetchCommands = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/admin/commands', {
+      const res = await axios.get('https://flashkindelivery-back-end.onrender.com/api/admin/commands', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -47,7 +47,7 @@ export default function AdminCommands() {
     setActionLoading(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`http://localhost:3000/api/admin/commands/${id}/cancel`, {}, {
+      await axios.patch(`https://flashkindelivery-back-end.onrender.com/api/admin/commands/${id}/cancel`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Course annulée avec succès.");
@@ -65,7 +65,7 @@ export default function AdminCommands() {
     setReassignModal({ isOpen: true, flashmans: [], loading: true });
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/admin/flashmans/active', {
+      const res = await axios.get('https://flashkindelivery-back-end.onrender.com/api/admin/flashmans/active', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -82,7 +82,7 @@ export default function AdminCommands() {
     setActionLoading(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`http://localhost:3000/api/admin/commands/${selectedCommand.id}/reassign`, { flashmanId }, {
+      await axios.patch(`https://flashkindelivery-back-end.onrender.com/api/admin/commands/${selectedCommand.id}/reassign`, { flashmanId }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Le colis a été réassigné avec succès !");

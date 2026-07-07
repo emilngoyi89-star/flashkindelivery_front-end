@@ -43,7 +43,7 @@ export default function DashboardHome() {
         const token = localStorage.getItem('token');
         
         // 1. Récupération des Commandes
-        const ordersResponse = await axios.get('http://localhost:3000/api/commands', {
+        const ordersResponse = await axios.get('https://flashkindelivery-back-end.onrender.com/api/commands', {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -51,7 +51,7 @@ export default function DashboardHome() {
         // Pour l'instant, si la route n'existe pas, on gère l'erreur gracieusement pour ne pas casser le front.
         let products = [];
         try {
-            const productsResponse = await axios.get('http://localhost:3000/api/products', {
+            const productsResponse = await axios.get('https://flashkindelivery-back-end.onrender.com/api/products', {
                headers: { Authorization: `Bearer ${token}` }
             });
             if(productsResponse.data.success) {

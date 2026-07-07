@@ -11,7 +11,7 @@ export default function AdminCatalogue() {
   const fetchZones = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/admin/zones', {
+      const res = await axios.get('/api/admin/zones', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -40,7 +40,7 @@ export default function AdminCatalogue() {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3000/api/admin/zones', zoneData, {
+      await axios.post('/api/admin/zones', zoneData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Catalogue mis à jour !");
@@ -57,7 +57,7 @@ export default function AdminCatalogue() {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3000/api/admin/zones/${id}`, {
+      await axios.delete(`/api/admin/zones/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Zone supprimée avec succès !");

@@ -31,7 +31,7 @@ export default function FlashmanWallet() {
   const fetchWalletData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/wallet', {
+      const response = await axios.get('https://flashkindelivery-back-end.onrender.com/api/wallet', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) setWalletData(response.data.data);
@@ -48,7 +48,7 @@ export default function FlashmanWallet() {
     try {
       const token = localStorage.getItem('token');
       const response = await axios({
-        url: `http://localhost:3000/api/wallet/withdraw/${withdrawalId}/pdf`,
+        url: `https://flashkindelivery-back-end.onrender.com/api/wallet/withdraw/${withdrawalId}/pdf`,
         method: 'GET',
         responseType: 'blob',
         headers: { Authorization: `Bearer ${token}` }
@@ -78,7 +78,7 @@ export default function FlashmanWallet() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:3000/api/wallet/withdraw', {
+      const response = await axios.post('https://flashkindelivery-back-end.onrender.com/api/wallet/withdraw', {
         amount: withdrawAmount, 
         method: paymentMethod, 
         phone: phoneNumber,
@@ -107,7 +107,7 @@ export default function FlashmanWallet() {
     setActionLoading('UPDATE_WITHDRAW');
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:3000/api/wallet/withdraw/${selectedWithdrawal.id}`, {
+      await axios.put(`https://flashkindelivery-back-end.onrender.com/api/wallet/withdraw/${selectedWithdrawal.id}`, {
         method: paymentMethod, phone: phoneNumber
       }, { headers: { Authorization: `Bearer ${token}` } });
       
@@ -127,7 +127,7 @@ export default function FlashmanWallet() {
     setActionLoading('CANCEL_WITHDRAW');
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3000/api/wallet/withdraw/${id}`, {
+      await axios.delete(`https://flashkindelivery-back-end.onrender.com/api/wallet/withdraw/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Retrait annulé, fonds restitués !");

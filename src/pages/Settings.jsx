@@ -20,7 +20,7 @@ export default function Settings() {
   const fetchSettings = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/users/profile', {
+      const res = await axios.get('https://flashkindelivery-back-end.onrender.com/api/users/profile', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -42,7 +42,7 @@ export default function Settings() {
     try {
       const token = localStorage.getItem('token');
       // On envoie tout l'objet (qui contient profil + paramètres)
-      await axios.put('http://localhost:3000/api/users/profile', settingsData, {
+      await axios.put('https://flashkindelivery-back-end.onrender.com/api/users/profile', settingsData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Paramètres sauvegardés avec succès ! 🚀');

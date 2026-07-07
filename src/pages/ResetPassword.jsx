@@ -47,7 +47,7 @@ export default function ResetPassword() {
 
     setLoading(true);
     try {
-      const response = await axios.put(`http://localhost:3000/api/auth/reset-password/${token}`, { password });
+      const response = await axios.put(`/api/auth/reset-password/${token}`, { password });
       if (response.data.success) {
         toast.success("Mot de passe mis à jour avec succès !");
         navigate('/login');

@@ -32,7 +32,7 @@ export default function PublicTracking() {
   useEffect(() => {
     const fetchTracking = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/commands/track/${code}`);
+        const response = await axios.get(`/api/commands/track/${code}`);
         if (response.data.success) {
           setCommand(response.data.command);
         }

@@ -31,7 +31,7 @@ export default function Register() {
     setModal({ isOpen: true, status: 'loading', message: 'Création de votre compte...' });
 
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/register', formData);
+      const response = await axios.post('https://flashkin-api.onrender.com/api/auth/register', formData);
       if (response.data.success) {
         setModal({ isOpen: true, status: 'success', message: response.data.message });
         setTimeout(() => navigate('/login'), 2500);

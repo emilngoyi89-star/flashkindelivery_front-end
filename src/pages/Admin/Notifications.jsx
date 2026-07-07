@@ -15,7 +15,7 @@ export default function AdminNotifications() {
   const fetchNotifications = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/admin/notifications', {
+      const res = await axios.get('https://flashkindelivery-back-end.onrender.com/api/admin/notifications', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {

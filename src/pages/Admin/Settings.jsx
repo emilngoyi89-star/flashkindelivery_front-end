@@ -36,7 +36,7 @@ export default function AdminSettings() {
   const fetchSettings = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:3000/api/admin/settings', {
+      const res = await axios.get('https://flashkindelivery-back-end.onrender.com/api/admin/settings', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -55,7 +55,7 @@ export default function AdminSettings() {
     setSaving(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3000/api/admin/settings', { settings }, {
+      await axios.post('https://flashkindelivery-back-end.onrender.com/api/admin/settings', { settings }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Paramètres système sauvegardés !");

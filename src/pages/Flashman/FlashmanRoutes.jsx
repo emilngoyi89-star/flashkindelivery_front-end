@@ -26,7 +26,7 @@ export default function FlashmanRoutes() {
     try {
       const token = localStorage.getItem('token');
       const endpoint = activeTab === 'CURRENT' ? 'my-routes' : 'my-history';
-      const response = await axios.get(`http://localhost:3000/api/commands/${endpoint}`, {
+      const response = await axios.get(`https://flashkindelivery-back-end.onrender.com/api/commands/${endpoint}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -64,7 +64,7 @@ export default function FlashmanRoutes() {
     setActionLoading(orderId);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(`http://localhost:3000/api/commands/${orderId}/deliver`, {}, {
+      const response = await axios.put(`https://flashkindelivery-back-end.onrender.com/api/commands/${orderId}/deliver`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -87,7 +87,7 @@ export default function FlashmanRoutes() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(`http://localhost:3000/api/commands/${cancelModalOrder.id}/cancel`, 
+      const response = await axios.put(`https://flashkindelivery-back-end.onrender.com/api/commands/${cancelModalOrder.id}/cancel`, 
         { reason: finalReason }, 
         { headers: { Authorization: `Bearer ${token}` } }
       );

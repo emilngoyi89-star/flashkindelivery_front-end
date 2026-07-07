@@ -21,7 +21,7 @@ export default function ProductsDashboard() {
   const fetchProducts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/api/products', {
+      const response = await axios.get('https://flashkindelivery-back-end.onrender.com/api/products', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -67,13 +67,13 @@ export default function ProductsDashboard() {
       
       if (editingProduct) {
         // Mode UPDATE
-        await axios.put(`http://localhost:3000/api/products/${editingProduct.id}`, formData, {
+        await axios.put(`https://flashkindelivery-back-end.onrender.com/api/products/${editingProduct.id}`, formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setFeedback({ isOpen: true, type: 'success', title: 'Produit mis à jour', message: 'Les modifications ont bien été enregistrées.' });
       } else {
         // Mode CREATE
-        await axios.post('http://localhost:3000/api/products', formData, {
+        await axios.post('https://flashkindelivery-back-end.onrender.com/api/products', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setFeedback({ isOpen: true, type: 'success', title: 'Produit ajouté', message: 'Le produit a été intégré à votre catalogue avec succès.' });
@@ -91,7 +91,7 @@ export default function ProductsDashboard() {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3000/api/products/${id}`, {
+      await axios.delete(`https://flashkindelivery-back-end.onrender.com/api/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchProducts();

@@ -52,7 +52,7 @@ export default function ForgotPassword() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/forgot-password', { email });
+      const response = await axios.post('https://flashkindelivery-back-end.onrender.com/api/auth/forgot-password', { email });
       if (response.data.success) {
         setStep(2);
       }
@@ -94,7 +94,7 @@ export default function ForgotPassword() {
         newPassword: isSkippingPassword ? null : newPassword
       };
 
-      const response = await axios.post('http://localhost:3000/api/auth/reset-password', payload);
+      const response = await axios.post('https://flashkindelivery-back-end.onrender.com/api/auth/reset-password', payload);
       
       if (response.data.success) {
         // Enregistrement de la session

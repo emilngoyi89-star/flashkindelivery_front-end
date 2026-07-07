@@ -1,13 +1,11 @@
 // src/api.js
 import axios from 'axios';
 
-const api = axios.create({
-  // Si le site est sur ton PC, il utilise localhost. 
-  // Sinon (donc sur Netlify), il utilise Render.
-  baseURL: window.location.hostname === 'localhost' 
-    ? 'http://localhost:3000' 
-    : 'https://flashkindelivery-back-end.onrender.com', 
-  withCredentials: true 
-});
+const DEFAULT_BASE = import.meta.env.VITE_API_BASE_URL || (window.location.hostname === 'localhost'
+  ? 'http://localhost:3000'
+  : 'https://flashkindelivery-back-end.onrender.com');
 
-export default api;
+axios.defaults.baseURL = DEFAULT_BASE;
+axios.defaults.withCredentials = true;
+
+export default axios;

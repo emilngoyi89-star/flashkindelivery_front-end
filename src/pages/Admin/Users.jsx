@@ -22,7 +22,7 @@ export default function AdminUsers() {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const { data } = await axios.get('http://localhost:3000/api/admin/users', {
+      const { data } = await axios.get('https://flashkindelivery-back-end.onrender.com/api/admin/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (data.success) {
@@ -45,7 +45,7 @@ export default function AdminUsers() {
       const newStatus = user.status === 'ACTIVE' ? false : true;
       const token = localStorage.getItem('token');
       
-      await axios.patch(`http://localhost:3000/api/admin/users/${user.id}/status`, 
+      await axios.patch(`https://flashkindelivery-back-end.onrender.com/api/admin/users/${user.id}/status`,
         { isActive: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -68,7 +68,7 @@ export default function AdminUsers() {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3000/api/admin/users/${id}`, {
+      await axios.delete(`https://flashkindelivery-back-end.onrender.com/api/admin/users/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Utilisateur supprimé avec succès.");

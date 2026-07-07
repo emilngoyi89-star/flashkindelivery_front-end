@@ -28,7 +28,7 @@ export default function Historique() {
     try {
       const token = localStorage.getItem('token');
       // J'ai supposé que ta route renvoie command.flashman, on l'utilise pour afficher son nom
-      const response = await axios.get('http://localhost:3000/api/commands', {
+      const response = await axios.get('https://flashkindelivery-back-end.onrender.com/api/commands', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data.success) {
@@ -53,7 +53,7 @@ export default function Historique() {
     if (window.confirm("Voulez-vous vraiment supprimer cette commande ? Cette action est irréversible.")) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:3000/api/commands/${id}`, {
+        await axios.delete(`https://flashkindelivery-back-end.onrender.com/api/commands/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success("Commande supprimée avec succès !");
@@ -69,7 +69,7 @@ export default function Historique() {
     if (window.confirm("Voulez-vous vraiment retirer cette course à ce livreur ? Elle sera remise sur le radar public et le livreur sera pénalisé.")) {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.put(`http://localhost:3000/api/commands/${id}/revoke`, {}, {
+        const response = await axios.put(`https://flashkindelivery-back-end.onrender.com/api/commands/${id}/revoke`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (response.data.success) {
@@ -88,7 +88,7 @@ export default function Historique() {
     setIsSubmittingReview(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`http://localhost:3000/api/reviews/${reviewOrder.id}`, {
+      const response = await axios.post(`https://flashkindelivery-back-end.onrender.com/api/reviews/${reviewOrder.id}`, {
         rating,
         comment: reviewComment
       }, {
@@ -113,7 +113,7 @@ export default function Historique() {
     if (window.confirm("Simuler la livraison ? Cela va transférer l'argent sur votre solde.")) {
       try {
         const token = localStorage.getItem('token');
-        await axios.put(`http://localhost:3000/api/commands/${id}/deliver`, {}, {
+        await axios.put(`https://flashkindelivery-back-end.onrender.com/api/commands/${id}/deliver`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success("Colis livré ! L'argent est sur votre compte.");
@@ -144,7 +144,7 @@ export default function Historique() {
     try {
       const token = localStorage.getItem('token');
       const payload = { ...editForm, amountToCollect: parseFloat(editForm.amountToCollect) };
-      await axios.put(`http://localhost:3000/api/commands/${editingOrder.id}`, payload, {
+      await axios.put(`https://flashkindelivery-back-end.onrender.com/api/commands/${editingOrder.id}`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success("Commande mise à jour !");
@@ -316,7 +316,7 @@ export default function Historique() {
                           {order.trackingCode && (
                             <button 
                               onClick={() => {
-                                navigator.clipboard.writeText(`http://localhost:5173/track/${order.trackingCode}`);
+                                navigator.clipboard.writeText(`https://flashkindelivery-back-end.onrender.com/track/${order.trackingCode}`);
                                 toast.success("Lien de suivi copié !");
                               }}
                               className="p-2 rounded-lg text-green-600 bg-green-50 hover:bg-green-100 transition-colors"
